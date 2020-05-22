@@ -14,6 +14,8 @@ public class Tache {
 
     private Date date_tache;
 
+    private Etat etat;
+
     public Tache() {
     }
 
