@@ -2,7 +2,9 @@ package fr.eni.jpa.bean;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
+@SuppressWarnings("ALL")
 @Entity
 public class Utilisateur implements Serializable {
 
@@ -17,6 +19,10 @@ public class Utilisateur implements Serializable {
     private String prenom;
 
     private String mdp;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,orphanRemoval = true)
+    @JoinColumn(name = "Utilisateur_id")
+    private List<Tache> taches;
 
     public Utilisateur() {
     }
