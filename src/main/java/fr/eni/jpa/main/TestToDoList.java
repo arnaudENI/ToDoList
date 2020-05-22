@@ -29,7 +29,9 @@ public class TestToDoList {
         try {
             dao.add(u1);
             dao.add(u2);
+
             dao.add(u3);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
