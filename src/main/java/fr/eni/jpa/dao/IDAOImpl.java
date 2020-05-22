@@ -2,28 +2,45 @@ package fr.eni.jpa.dao;
 
 import fr.eni.jpa.bean.Utilisateur;
 import fr.eni.jpa.exception.DAOException;
+import org.hibernate.type.EntityType;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class IDAOImpl<T,U> implements IDao<T,U>{
+public class IDAOImpl<T, U> implements IDao<T, U> {
 
+    private Class<T> classEntity;
+
+    public IDAOImpl(Class<T> classEntity) {
+        this.classEntity = classEntity;
+    }
+
+    public IDAOImpl() {
+
+    }
+
+    public Class<T> getClassEntity() {
+        return classEntity;
+    }
 
     @Override
     public void add(T t) throws Exception {
-        EntityManager em  = DAOUtil.getEntityManager();
+        EntityManager em = DAOUtil.getEntityManager();
         EntityTransaction et = em.getTransaction();
         et.begin();
-        try{
+        try {
             em.persist(t);
             et.commit();
-        }catch (Exception e){
+        } catch (Exception e) {
             et.rollback();
-            throw new DAOException("Erreur lors de l'ajout de " + t  + " : " + e.getMessage());
+            throw new DAOException("Erreur lors de l'ajout de " + t + " : " + e.getMessage());
         }
     }
 
@@ -44,22 +61,38 @@ public class IDAOImpl<T,U> implements IDao<T,U>{
 
     @Override
     public T findById(Class c, U id) {
-        return (T) DAOUtil.getEntityManager().find(c.getClass(),id);
+        return (T) DAOUtil.getEntityManager().find(c.getClass(), id);
     }
+
 
     @Override
     public List<T> findAll(Class c) throws DAOException {
+        String req = "select Object(t) from " + c.getName() + " t";
+        return DAOUtil
+                .getEntityManager()
+                .createQuery(req, c)
+                .getResultList();
+
+    }
+
+
+    public List<T> findAll() throws DAOException {
+
         EntityManager em = DAOUtil.getEntityManager();
         CriteriaBuilder cb = em.getCriteriaBuilder();
 
-//        Class classe = c.forName(c.getClass());
+        CriteriaQuery<T> query = cb.createQuery(classEntity);
+        Root<T> rt = query.from(classEntity);
 
-//        CriteriaBuilder<> query = cb.createQuery(c.getClass());
+        CriteriaQuery<T> all = query.select(rt);
+        TypedQuery<T> allQuery = em.createQuery(all);
 
-        return null;
+        return allQuery.getResultList();
+
+
     }
 
-    public List<Utilisateur> findAllUser(){
+    public List<Utilisateur> findAllUser() {
         TypedQuery<Utilisateur> query = DAOUtil.getEntityManager().createNamedQuery("findAllUser", Utilisateur.class);
         return query.getResultList();
     }

@@ -4,12 +4,16 @@ import fr.eni.jpa.bean.Categorie;
 import fr.eni.jpa.bean.Etat;
 import fr.eni.jpa.bean.Tache;
 import fr.eni.jpa.bean.Utilisateur;
+import fr.eni.jpa.dao.DAOUtil;
 import fr.eni.jpa.dao.IDAOImpl;
+import fr.eni.jpa.exception.DAOException;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class TestToDoList {
+
+
 
     public static void main(String[] args) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -21,6 +25,7 @@ public class TestToDoList {
         Utilisateur u2 = new Utilisateur("Babousse", "Maxime", "Boussin", "ghikl");
         Utilisateur u3 = new Utilisateur("Jean", "Jean", "Jean", "ghqsdgvikl");
         IDAOImpl dao = new IDAOImpl();
+        IDAOImpl udao = new IDAOImpl<>(Utilisateur.class);
         try {
             dao.add(u1);
             dao.add(u2);
@@ -29,6 +34,12 @@ public class TestToDoList {
             e.printStackTrace();
         }
 
+        try {
+            System.out.println("liste des utilisateurs : " + dao.findAll(Utilisateur.class));
+            System.out.println("liste findall generic criteria : " + udao.findAll());
+        } catch (DAOException e) {
+            e.printStackTrace();
+        }
         /**
          * Ajout categories
          */
