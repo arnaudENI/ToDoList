@@ -20,7 +20,7 @@ public class Utilisateur implements Serializable {
 
     private String mdp;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,orphanRemoval = true)
     @JoinColumn(name = "Utilisateur_id")
     private List<Tache> taches;
 

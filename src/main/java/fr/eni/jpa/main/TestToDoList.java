@@ -4,6 +4,7 @@ import fr.eni.jpa.bean.Categorie;
 import fr.eni.jpa.bean.Etat;
 import fr.eni.jpa.bean.Tache;
 import fr.eni.jpa.bean.Utilisateur;
+import fr.eni.jpa.dao.IDAOImpl;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -18,7 +19,12 @@ public class TestToDoList {
          */
         Utilisateur u1 = new Utilisateur("arno", "arnaud", "coste", "abcdef");
         Utilisateur u2 = new Utilisateur("Babousse", "Maxime", "Boussin", "ghikl");
-
+        IDAOImpl dao = new IDAOImpl();
+        try {
+            dao.add(u1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         /**
          * Ajout categories
