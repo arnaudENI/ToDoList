@@ -4,6 +4,8 @@ import fr.eni.jpa.exception.DAOException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 public class IDAOImpl<T,U> implements IDao<T,U>{
@@ -23,28 +25,66 @@ public class IDAOImpl<T,U> implements IDao<T,U>{
         }
     }
 
+    public void add(List<T> listeT) throws Exception {
+        EntityManager em  = DAOUtil.getEntityManager();
+        EntityTransaction et = em.getTransaction();
+        et.begin();
+        try{
+            listeT.forEach(em::persist);
+            et.commit();
+        }catch (Exception e){
+            et.rollback();
+            throw new DAOException("Erreur lors de l'ajout de " + listeT  + " : " + e.getMessage());
+        }
+    }
+
     @Override
     public void delete(T t) throws Exception {
-
+        EntityManager em = DAOUtil.getEntityManager();
+        EntityTransaction et = em.getTransaction();
+        et.begin();
+        try {
+            em.remove(t);
+            et.commit();
+        } catch (Exception e) {
+            et.rollback();
+            throw e;
+        }
     }
 
     @Override
     public void update(T t) throws Exception {
-
+        EntityManager em = DAOUtil.getEntityManager();
+        EntityTransaction et = em.getTransaction();
+        et.begin();
+        try {
+            em.merge(t);
+            et.commit();
+        } catch (Exception e) {
+            et.rollback();
+            throw e;
+        }
     }
 
     @Override
     public void update(List<T> listeT) throws Exception {
-
+        EntityManager em = DAOUtil.getEntityManager();
+        EntityTransaction et = em.getTransaction();
+        et.begin();
+        try {
+            listeT.forEach(em::merge);
+            et.commit();
+        } catch (Exception e) {
+            et.rollback();
+            throw e;
+        }
     }
 
     @Override
     public T findById(Class c, U id) {
-        return null;
+        return (T) DAOUtil.getEntityManager().find(c.getClass(),id);
     }
 
     @Override
-    public List<T> findAll(Class c) throws DAOException {
-        return null;
-    }
+    public List<T> findAll(Class c) throws DAOException { return null; }
 }
