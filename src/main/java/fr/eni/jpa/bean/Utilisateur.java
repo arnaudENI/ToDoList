@@ -6,6 +6,12 @@ import java.util.List;
 
 @SuppressWarnings("ALL")
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "findAllUser",
+                    query = "SELECT u FROM Utilisateur u"),
+        @NamedQuery(name = "findNameLike",
+                    query = "SELECT u FROM Utilisateur u WHERE u.nom LIKE :var")
+})
 public class Utilisateur implements Serializable {
 
     @Id

@@ -19,9 +19,12 @@ public class TestToDoList {
          */
         Utilisateur u1 = new Utilisateur("arno", "arnaud", "coste", "abcdef");
         Utilisateur u2 = new Utilisateur("Babousse", "Maxime", "Boussin", "ghikl");
+        Utilisateur u3 = new Utilisateur("Jean", "Jean", "Jean", "ghqsdgvikl");
         IDAOImpl dao = new IDAOImpl();
         try {
             dao.add(u1);
+            dao.add(u2);
+            dao.add(u3);
         } catch (Exception e) {
             e.printStackTrace();
         }

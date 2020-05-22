@@ -1,9 +1,13 @@
 package fr.eni.jpa.dao;
 
+import fr.eni.jpa.bean.Utilisateur;
 import fr.eni.jpa.exception.DAOException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import java.util.ArrayList;
 import java.util.List;
 
 public class IDAOImpl<T,U> implements IDao<T,U>{
@@ -40,11 +44,25 @@ public class IDAOImpl<T,U> implements IDao<T,U>{
 
     @Override
     public T findById(Class c, U id) {
-        return null;
+        return (T) DAOUtil.getEntityManager().find(c.getClass(),id);
     }
 
     @Override
     public List<T> findAll(Class c) throws DAOException {
+        EntityManager em = DAOUtil.getEntityManager();
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+
+//        Class classe = c.forName(c.getClass());
+
+//        CriteriaBuilder<> query = cb.createQuery(c.getClass());
+
         return null;
     }
+
+    public List<Utilisateur> findAllUser(){
+        TypedQuery<Utilisateur> query = DAOUtil.getEntityManager().createNamedQuery("findAllUser", Utilisateur.class);
+        return query.getResultList();
+    }
+
+
 }
