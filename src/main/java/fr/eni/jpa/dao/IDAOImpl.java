@@ -65,6 +65,12 @@ public class IDAOImpl<T, U> implements IDao<T, U> {
     }
 
 
+    /**
+     * soluce 1
+     * @param c
+     * @return
+     * @throws DAOException
+     */
     @Override
     public List<T> findAll(Class c) throws DAOException {
         String req = "select Object(t) from " + c.getName() + " t";
@@ -75,7 +81,11 @@ public class IDAOImpl<T, U> implements IDao<T, U> {
 
     }
 
-
+    /**
+     * Soluce 2
+     * @return
+     * @throws DAOException
+     */
     public List<T> findAll() throws DAOException {
 
         EntityManager em = DAOUtil.getEntityManager();
