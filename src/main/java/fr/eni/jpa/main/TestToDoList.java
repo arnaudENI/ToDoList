@@ -22,6 +22,7 @@ public class TestToDoList {
         IDAOImpl dao = new IDAOImpl();
         try {
             dao.add(u1);
+            dao.add(u2);
         } catch (Exception e) {
             e.printStackTrace();
         }
