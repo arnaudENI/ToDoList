@@ -1,9 +1,10 @@
 package fr.eni.jpa.bean;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Utilisateur  {
+public class Utilisateur implements Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)

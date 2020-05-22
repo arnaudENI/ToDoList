@@ -5,10 +5,8 @@ import fr.eni.jpa.bean.Etat;
 import fr.eni.jpa.bean.Tache;
 import fr.eni.jpa.bean.Utilisateur;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class TestToDoList {
 
@@ -20,6 +18,7 @@ public class TestToDoList {
          */
         Utilisateur u1 = new Utilisateur("arno", "arnaud", "coste", "abcdef");
         Utilisateur u2 = new Utilisateur("Babousse", "Maxime", "Boussin", "ghikl");
+
 
         /**
          * Ajout categories

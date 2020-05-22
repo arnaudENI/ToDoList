@@ -1,10 +1,13 @@
 package fr.eni.jpa.bean;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+@SuppressWarnings("JpaDataSourceORMInspection")
 @Entity
-public class Tache {
+public class Tache implements Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -14,6 +17,13 @@ public class Tache {
 
     private Date date_tache;
 
+    @ManyToMany
+    @JoinTable(name = "tacheCategorie",
+        joinColumns = {@JoinColumn(name = "id_Tache")},
+        inverseJoinColumns = {@JoinColumn(name = "id_Categorie")})
+    private List<Categorie> categories;
+
+    @ManyToOne
     private Etat etat;
 
     public Tache() {

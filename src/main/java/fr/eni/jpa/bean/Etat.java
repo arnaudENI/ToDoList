@@ -1,15 +1,17 @@
 package fr.eni.jpa.bean;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Etat {
+public class Etat implements Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id_Etat;
 
     private String libelle;
+
 
     public Etat() {
     }
