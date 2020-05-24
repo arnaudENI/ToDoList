@@ -21,22 +21,48 @@ public class TestToDoLista {
 
     public static void main(String[] args) throws Exception {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        IDAOImpl udao = new IDAOImpl<>(Utilisateur.class);
+        IDAOImpl dao = new IDAOImpl();
+
+        /**
+         * Ajout categories
+         */
+        //u1
+        Categorie c1 = new Categorie("Developpement");
+        Categorie c2 = new Categorie("Analyse");
+        Categorie c3 = new Categorie("deploiement");
+        List<Categorie> listCateUtilisateur1 = new ArrayList<>();
+        listCateUtilisateur1.add(c1);
+        listCateUtilisateur1.add(c2);
+        listCateUtilisateur1.add(c3);
+
+        //u2
+        Categorie c21 = new Categorie("developpement");
+        Categorie c22 = new Categorie("diagramme");
+        Categorie c23 = new Categorie("git");
+        List<Categorie> listCateUtilisateur2 = new ArrayList<>();
+        listCateUtilisateur2.add(c21);
+        listCateUtilisateur2.add(c22);
+        listCateUtilisateur2.add(c23);
+
 
         /**
          * Ajout d'utilisateurs
          */
-        Utilisateur u1 = new Utilisateur("arno", "arnaud", "coste", "abcdef");
-        Utilisateur u2 = new Utilisateur("Babousse", "Maxime", "Boussin", "ghikl");
+        Utilisateur u1 = new Utilisateur("arno", "arnaud", "coste", "abcdef",listCateUtilisateur1);
+        Utilisateur u2 = new Utilisateur("Babousse", "Maxime", "Boussin", "ghikl",listCateUtilisateur2);
         Utilisateur u3 = new Utilisateur("Goule12", "Annie", "Boussin", "pass123");
         Utilisateur u4 = new Utilisateur("Foussey", "Fabien", "Boussin", "ggor85");
         List<Utilisateur> listU = new ArrayList<>();
         listU.add(u3);
         listU.add(u4);
 
-        IDAOImpl dao = new IDAOImpl();
+
         try {
             dao.add(u1);
             dao.add(u2);
+            dao.add(u3);
+            dao.add(u4);
             dao.add(listU);
         } catch (Exception e) {
             e.printStackTrace();
@@ -52,36 +78,10 @@ public class TestToDoLista {
             e.printStackTrace();
         }
         
-        IDAOImpl udao = new IDAOImpl<>(Utilisateur.class);
 
-        /**
-         * Ajout categories
-         */
-        //u1
-        Categorie c1 = new Categorie("Developpement");
-        Categorie c2 = new Categorie("Analyse");
-        Categorie c3 = new Categorie("deploiement");
-        List<Categorie> listCateUtilisateur1 = new ArrayList<>();
-        listCateUtilisateur1.add(c1);
-        listCateUtilisateur1.add(c2);
-        listCateUtilisateur1.add(c3);
-        
-        //u2
-        Categorie c21 = new Categorie("developpement");
-        Categorie c22 = new Categorie("diagramme");
-        Categorie c23 = new Categorie("git");
-        List<Categorie> listCateUtilisateur2 = new ArrayList<>();
-        listCateUtilisateur2.add(c21);
-        listCateUtilisateur2.add(c22);
-        listCateUtilisateur2.add(c23);
 
-        /**
-         * Ajout d'utilisateurs
-         */
-        Utilisateur u1 = new Utilisateur("arno", "arnaud", "coste", "abcdef",listCateUtilisateur1);
-        Utilisateur u2 = new Utilisateur("Babousse", "Maxime", "Boussin", "ghikl",listCateUtilisateur2);
-        dao.add(u1);
-        dao.add(u2);
+
+
         /**
          * Ajout Etat
          */
@@ -122,13 +122,6 @@ public class TestToDoLista {
         }
 
 
-
-        /**
-         * Ajout Tache
-         */
-        Tache t2 = new Tache("créer diagrammes", sdf.parse("20/05/2020"));
-        Tache t1 = new Tache("ecrire code", sdf.parse("22/05/2020"));
-        Tache t3 = new Tache("rendre ecf", sdf.parse("25/05/2020"));
     }
 
 }
