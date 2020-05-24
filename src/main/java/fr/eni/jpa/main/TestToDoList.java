@@ -32,8 +32,6 @@ public class TestToDoList {
         listCateUtilisateur1.add(c1);
         listCateUtilisateur1.add(c2);
         listCateUtilisateur1.add(c3);
-
-
         
         //u2
         Categorie c21 = new Categorie("developpement");
@@ -57,18 +55,21 @@ public class TestToDoList {
         Etat e1 = new Etat("fait");
         Etat e2 = new Etat("A faire");
         Etat e3 = new Etat("en cours");
+        dao.add(e1);
+        dao.add(e2);
+        dao.add(e3);
         /**
          * Ajout Tache
          */
         Tache t2 = new Tache("créer diagrammes", sdf.parse("20/05/2020"),e1);
         Tache t1 = new Tache("ecrire code", sdf.parse("22/05/2020"),e2);
         Tache t3 = new Tache("rendre ecf", sdf.parse("25/05/2020"),e3);
-        List<Tache> tachesu1 = new ArrayList<>();
-        List<Tache> tachesu2 = new ArrayList<>();
-        List<Tache> tachesu3 = new ArrayList<>();
-        tachesu1.add(t2);
-        tachesu2.add(t1);
-        tachesu3.add(t3);
+        List<Tache> tachesUtilisateur1 = new ArrayList<>();
+        List<Tache> tachesUtilisateur2 = new ArrayList<>();
+        List<Tache> tachesUtilisateur3 = new ArrayList<>();
+        tachesUtilisateur1.add(t2);
+        tachesUtilisateur2.add(t1);
+        tachesUtilisateur3.add(t3);
 
 
 
