@@ -16,7 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestToDoLista {
+public class TestToDoList {
 
 
     public static void main(String[] args) throws Exception {
@@ -77,10 +77,6 @@ public class TestToDoLista {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
-
-
-
 
         /**
          * Ajout Etat
@@ -103,8 +99,6 @@ public class TestToDoLista {
         tachesUtilisateur1.add(t2);
         tachesUtilisateur2.add(t1);
         tachesUtilisateur3.add(t3);
-
-
 
 
         try {
