@@ -10,19 +10,42 @@ import fr.eni.jpa.exception.DAOException;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TestToDoList {
-
 
 
     public static void main(String[] args) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
+
+        /**
+         * Ajout categories
+         */
+        //u1
+        Categorie c1 = new Categorie("Developpement");
+        Categorie c2 = new Categorie("Analyse");
+        Categorie c3 = new Categorie("deploiement");
+        List<Categorie> listCateu1 = new ArrayList<>();
+        listCateu1.add(c1);
+        listCateu1.add(c2);
+        listCateu1.add(c3);
+        //u2
+        Categorie c21 = new Categorie("developpement");
+        Categorie c22 = new Categorie("diagramme");
+        Categorie c23 = new Categorie("git");
+        List<Categorie> listCateu2 = new ArrayList<>();
+        listCateu2.add(c21);
+        listCateu2.add(c22);
+        listCateu2.add(c23);
+
+
         /**
          * Ajout d'utilisateurs
          */
-        Utilisateur u1 = new Utilisateur("arno", "arnaud", "coste", "abcdef");
-        Utilisateur u2 = new Utilisateur("Babousse", "Maxime", "Boussin", "ghikl");
+        Utilisateur u1 = new Utilisateur("arno", "arnaud", "coste", "abcdef",listCateu1);
+        Utilisateur u2 = new Utilisateur("Babousse", "Maxime", "Boussin", "ghikl",listCateu2);
         Utilisateur u3 = new Utilisateur("Jean", "Jean", "Jean", "ghqsdgvikl");
         IDAOImpl dao = new IDAOImpl();
         IDAOImpl udao = new IDAOImpl<>(Utilisateur.class);
@@ -40,12 +63,7 @@ public class TestToDoList {
         } catch (DAOException e) {
             e.printStackTrace();
         }
-        /**
-         * Ajout categories
-         */
-        Categorie c1 = new Categorie("Developpement");
-        Categorie c2 = new Categorie("Analyse");
-        Categorie c3 = new Categorie("deploiement");
+
 
         /**
          * Ajout Etat
