@@ -10,6 +10,7 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import javax.rmi.CORBA.Util;
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.List;
@@ -101,7 +102,9 @@ public class IDAOImpl<T, U> implements IDao<T, U> {
 
     @Override
     public T findById(Class c, U id) {
-        return (T) DAOUtil.getEntityManager().find(c.getClass(), id);
+        return (T) DAOUtil
+                .getEntityManager()
+                .find(c, id);
     }
 
 
@@ -147,5 +150,19 @@ public class IDAOImpl<T, U> implements IDao<T, U> {
         return query.getResultList();
     }
 
+    /**
+     * pour les namedQueries sur utilisateur JPQL
+     * @param name
+     * @return
+     */
+    public List<Utilisateur> findByNameLike(String name){
+        TypedQuery<Utilisateur> query = DAOUtil.getEntityManager().createNamedQuery("findNameLike",Utilisateur.class);
+        return query.setParameter("var", name + "%").getResultList();
+    }
+
+    public List<Utilisateur> findAllJpql(){
+        TypedQuery<Utilisateur> query = DAOUtil.getEntityManager().createNamedQuery("findAllUser", Utilisateur.class);
+        return query.getResultList();
+    }
 
 }
