@@ -30,8 +30,9 @@ public class Utilisateur implements Serializable {
     @JoinColumn(name = "Utilisateur_id")
     private List<Tache> taches;
 
-    @OneToMany(mappedBy = "utilisateur",cascade = CascadeType.ALL,orphanRemoval = true)
-    private List<Categorie> categories = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
+    @JoinColumn(name = "Categorie_id")
+    private List<Categorie> categories;
 
     public Utilisateur() {
     }
@@ -51,13 +52,7 @@ public class Utilisateur implements Serializable {
         this.mdp = mdp;
     }
 
-    public Utilisateur(String identifiant, String nom, String prenom, String mdp, List<Categorie> categories) {
-        this.identifiant = identifiant;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.mdp = mdp;
-        this.categories = categories;
-    }
+
 
     public Utilisateur(String identifiant, String nom, String prenom, String mdp, List<Tache> taches, List<Categorie> categories) {
         this.identifiant = identifiant;
@@ -65,6 +60,16 @@ public class Utilisateur implements Serializable {
         this.prenom = prenom;
         this.mdp = mdp;
         this.taches = taches;
+        this.categories = categories;
+    }
+
+
+
+    public Utilisateur(String identifiant, String nom, String prenom, String mdp, List<Categorie> categories) {
+        this.identifiant = identifiant;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.mdp = mdp;
         this.categories = categories;
     }
 
