@@ -18,5 +18,5 @@ Vous déposerez les différents livrables (diagrammes, projet) sous le canal �
 ![use-case](images/use-case.png)
 
 ## diagramme EER
-![Entity](images/EERTodolist.png)
+![Entity](images/ERD.png)
 
