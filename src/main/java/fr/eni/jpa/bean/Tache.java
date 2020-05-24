@@ -40,6 +40,19 @@ public class Tache implements Serializable {
         this.date_tache = date_tache;
     }
 
+    public Tache(String description, Date date_tache, List<Categorie> categories, Etat etat) {
+        this.description = description;
+        this.date_tache = date_tache;
+        this.categories = categories;
+        this.etat = etat;
+    }
+
+    public Tache(String description, Date date_tache, Etat etat) {
+        this.description = description;
+        this.date_tache = date_tache;
+        this.etat = etat;
+    }
+
     public int getId_Tache() {
         return id_Tache;
     }
@@ -68,12 +81,30 @@ public class Tache implements Serializable {
         this.date_tache = date_tache;
     }
 
+    public List<Categorie> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Categorie> categories) {
+        this.categories = categories;
+    }
+
+    public Etat getEtat() {
+        return etat;
+    }
+
+    public void setEtat(Etat etat) {
+        this.etat = etat;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Tache{");
         sb.append("id_Tache=").append(id_Tache);
         sb.append(", description='").append(description).append('\'');
         sb.append(", date_tache=").append(date_tache);
+        sb.append(", categories=").append(categories);
+        sb.append(", etat=").append(etat);
         sb.append('}');
         return sb.toString();
     }

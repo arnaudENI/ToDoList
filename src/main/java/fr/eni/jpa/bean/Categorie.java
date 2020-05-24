@@ -12,10 +12,15 @@ public class Categorie implements Serializable {
 
     private String libelle;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Utilisateur utilisateur;
 
     public Categorie() {
+    }
+
+    public Categorie(String libelle, Utilisateur utilisateur) {
+        this.libelle = libelle;
+        this.utilisateur = utilisateur;
     }
 
     public Categorie(int id_Categorie, String libelle) {
@@ -43,11 +48,20 @@ public class Categorie implements Serializable {
         this.libelle = libelle;
     }
 
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Categorie{");
-        sb.append("idCategorie=").append(id_Categorie);
+        sb.append("id_Categorie=").append(id_Categorie);
         sb.append(", libelle='").append(libelle).append('\'');
+        sb.append(", utilisateur=").append(utilisateur);
         sb.append('}');
         return sb.toString();
     }
