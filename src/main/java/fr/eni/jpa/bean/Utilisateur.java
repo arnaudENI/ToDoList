@@ -2,10 +2,16 @@ package fr.eni.jpa.bean;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("ALL")
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "findAllUser",
+                    query = "SELECT u FROM Utilisateur u"),
+        @NamedQuery(name = "findNameLike",
+                    query = "SELECT u FROM Utilisateur u WHERE u.nom LIKE :var")
+})
 public class Utilisateur implements Serializable {
 
     @Id
@@ -20,9 +26,12 @@ public class Utilisateur implements Serializable {
 
     private String mdp;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,orphanRemoval = true)
     @JoinColumn(name = "Utilisateur_id")
     private List<Tache> taches;
+
+    @OneToMany(mappedBy = "utilisateur",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<Categorie> categories = new ArrayList<>();
 
     public Utilisateur() {
     }
@@ -40,6 +49,23 @@ public class Utilisateur implements Serializable {
         this.nom = nom;
         this.prenom = prenom;
         this.mdp = mdp;
+    }
+
+    public Utilisateur(String identifiant, String nom, String prenom, String mdp, List<Categorie> categories) {
+        this.identifiant = identifiant;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.mdp = mdp;
+        this.categories = categories;
+    }
+
+    public Utilisateur(String identifiant, String nom, String prenom, String mdp, List<Tache> taches, List<Categorie> categories) {
+        this.identifiant = identifiant;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.mdp = mdp;
+        this.taches = taches;
+        this.categories = categories;
     }
 
     public int getId_utilisateur() {
@@ -82,14 +108,32 @@ public class Utilisateur implements Serializable {
         this.mdp = mdp;
     }
 
+    public List<Tache> getTaches() {
+        return taches;
+    }
+
+    public void setTaches(List<Tache> taches) {
+        this.taches = taches;
+    }
+
+    public List<Categorie> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Categorie> categories) {
+        this.categories = categories;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Utilisateur{");
-        sb.append("id=").append(id_utilisateur);
+        sb.append("id_utilisateur=").append(id_utilisateur);
         sb.append(", identifiant='").append(identifiant).append('\'');
         sb.append(", nom='").append(nom).append('\'');
         sb.append(", prenom='").append(prenom).append('\'');
         sb.append(", mdp='").append(mdp).append('\'');
+        sb.append(", taches=").append(taches);
+        sb.append(", categories=").append(categories);
         sb.append('}');
         return sb.toString();
     }

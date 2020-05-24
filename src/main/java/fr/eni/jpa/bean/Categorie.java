@@ -12,6 +12,9 @@ public class Categorie implements Serializable {
 
     private String libelle;
 
+    @ManyToOne
+    private Utilisateur utilisateur;
+
     public Categorie() {
     }
 
