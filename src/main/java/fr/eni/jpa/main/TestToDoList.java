@@ -1,17 +1,11 @@
 package fr.eni.jpa.main;
 
 import fr.eni.jpa.bean.Categorie;
-import fr.eni.jpa.bean.Etat;
 import fr.eni.jpa.bean.Tache;
 import fr.eni.jpa.bean.Utilisateur;
-import fr.eni.jpa.dao.DAOUtil;
 import fr.eni.jpa.dao.IDAOImpl;
 import fr.eni.jpa.exception.DAOException;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
