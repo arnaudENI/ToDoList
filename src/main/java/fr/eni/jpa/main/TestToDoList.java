@@ -86,25 +86,14 @@ public class TestToDoList {
         System.out.println("Et voila il s'appel maintenant  : " + max.getPrenom() + " la preuve : ");
         afficherBoussins(dao);
 
-        /**
-         * Ajout Etat
-         */
-        Etat e1 = new Etat("fait");
-        Etat e2 = new Etat("A faire");
-        Etat e3 = new Etat("en cours");
-        dao.add(e1);
-        dao.add(e2);
-        dao.add(e3);
-        System.out.println("\n******************Les etats suivants ont ete ajoutes :*****************");
-        afficherTable(dao,Etat.class);
 
         /**
          * Ajout Tache
          */
-        Tache t2 = new Tache("créer diagrammes", sdf.parse("20/05/2020"), e1);
-        Tache t1 = new Tache("ecrire code", sdf.parse("24/053/2020"), e2);
-        Tache t3 = new Tache("rendre ecf", sdf.parse("12/01/2020"), e3);
-        Tache t4 = new Tache("comprendre Git", sdf.parse("257/06/2020"), e2);
+        Tache t2 = new Tache("créer diagrammes", sdf.parse("20/05/2020"), true);
+        Tache t1 = new Tache("ecrire code", sdf.parse("24/053/2020"), false);
+        Tache t3 = new Tache("rendre ecf", sdf.parse("12/01/2020"), true);
+        Tache t4 = new Tache("comprendre Git", sdf.parse("257/06/2020"), false);
         List<Tache> listeTaches1 = new ArrayList<>();
         List<Tache> listTaches2 = new ArrayList<>();
         listeTaches1.add(t2);

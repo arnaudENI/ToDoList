@@ -30,6 +30,12 @@ public class Tache implements Serializable {
     public Tache() {
     }
 
+    public Tache(String description, Date date_tache, boolean fait) {
+        this.description = description;
+        this.date_tache = date_tache;
+        this.fait = fait;
+    }
+
     public Tache(String description, Date date_tache, boolean fait, List<Categorie> categories) {
         this.description = description;
         this.date_tache = date_tache;
