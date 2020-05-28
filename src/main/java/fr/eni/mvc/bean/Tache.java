@@ -1,9 +1,8 @@
-package fr.eni.jpa.bean;
+package fr.eni.mvc.bean;
 
-import org.hibernate.validator.constraints.NotBlank;
+import fr.eni.jpa.bean.Categorie;
 
 import javax.persistence.*;
-import javax.validation.constraints.Past;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -16,12 +15,10 @@ public class Tache implements Serializable {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id_Tache;
 
-    @NotBlank(message = "Vous devez saisir une description")
     private String description;
 
     @Column(name = "date_tache")
     @Temporal(TemporalType.DATE)
-    @Past(message = "La date ne doit pas être antérieur à la date du jour")
     private Date date_tache;
 
     private boolean fait;

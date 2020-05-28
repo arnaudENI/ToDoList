@@ -1,10 +1,7 @@
-package fr.eni.jpa.bean;
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotBlank;
+package fr.eni.mvc.bean;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,37 +15,29 @@ import java.util.List;
 })
 public class Utilisateur implements Serializable {
 
-    //TODO : ajouter les annotations pour la validation des formulaires
+    //TODO : ajouter les annotaions pour la validation des formulaires
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id_utilisateur;
 
     @Column(name = "identifiant", unique = true)
-    @NotNull
-    @Length(min = 0, max = 25)
-    @Pattern(regexp = "[a-zA-Z]*")
     private String identifiant;
 
-    @NotBlank(message = "Veuillez saisir un nom")
-    @Pattern(regexp = "[a-zA-Z]*")
+    @NotNull
     private String nom;
 
-    @NotBlank(message = "Veuillez saisir un prenom")
-    @Pattern(regexp = "[a-zA-Z]*")
+    @NotNull
     private String prenom;
 
-    @NotNull
-    @Length(min = 8)
-    @Pattern(regexp = "[a-zA-Z0-9]*")
     private String mdp;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,orphanRemoval = true)
     @JoinColumn(name = "Utilisateur_id")
-    private List<Tache> taches;
+    private List<fr.eni.mvc.bean.Tache> taches;
 
     @OneToMany(cascade = CascadeType.ALL,fetch=FetchType.LAZY,orphanRemoval = true)
     @JoinColumn(name = "Utilisateur_id")
-    private List<Categorie> categories;
+    private List<fr.eni.mvc.bean.Categorie> categories;
 
     public Utilisateur() {
     }
@@ -70,7 +59,7 @@ public class Utilisateur implements Serializable {
 
 
 
-    public Utilisateur(String identifiant, String nom, String prenom, String mdp, List<Tache> taches, List<Categorie> categories) {
+    public Utilisateur(String identifiant, String nom, String prenom, String mdp, List<fr.eni.mvc.bean.Tache> taches, List<fr.eni.mvc.bean.Categorie> categories) {
         this.identifiant = identifiant;
         this.nom = nom;
         this.prenom = prenom;
@@ -81,7 +70,7 @@ public class Utilisateur implements Serializable {
 
 
 
-    public Utilisateur(String identifiant, String nom, String prenom, String mdp, List<Categorie> categories) {
+    public Utilisateur(String identifiant, String nom, String prenom, String mdp, List<fr.eni.mvc.bean.Categorie> categories) {
         this.identifiant = identifiant;
         this.nom = nom;
         this.prenom = prenom;
@@ -129,7 +118,7 @@ public class Utilisateur implements Serializable {
         this.mdp = mdp;
     }
 
-    public List<Tache> getTaches() {
+    public List<fr.eni.mvc.bean.Tache> getTaches() {
         return taches;
     }
 
@@ -137,7 +126,7 @@ public class Utilisateur implements Serializable {
         this.taches = taches;
     }
 
-    public List<Categorie> getCategories() {
+    public List<fr.eni.mvc.bean.Categorie> getCategories() {
         return categories;
     }
 
