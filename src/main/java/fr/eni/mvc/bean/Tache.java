@@ -1,7 +1,5 @@
 package fr.eni.mvc.bean;
 
-import fr.eni.jpa.bean.Categorie;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
