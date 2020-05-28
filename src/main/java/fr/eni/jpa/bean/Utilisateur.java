@@ -14,6 +14,7 @@ import java.util.List;
 })
 public class Utilisateur implements Serializable {
 
+    //TODO : ajouter les annotaions pour la validation des formulaires
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id_utilisateur;
@@ -31,8 +32,8 @@ public class Utilisateur implements Serializable {
     @JoinColumn(name = "Utilisateur_id")
     private List<Tache> taches;
 
-    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
-    @JoinColumn(name = "Categorie_id")
+    @OneToMany(cascade = CascadeType.ALL,fetch=FetchType.LAZY,orphanRemoval = true)
+    @JoinColumn(name = "Utilisateur_id")
     private List<Categorie> categories;
 
     public Utilisateur() {
