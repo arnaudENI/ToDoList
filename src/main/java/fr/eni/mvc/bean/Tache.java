@@ -23,10 +23,11 @@ public class Tache implements Serializable {
 
     private boolean fait;
 
+
+//    @JoinTable(name = "tacheCategorie",
+//        joinColumns = {@JoinColumn(name = "id_Tache")},
+//        inverseJoinColumns = {@JoinColumn(name = "id_Categorie")})
     @ManyToMany
-    @JoinTable(name = "tacheCategorie",
-        joinColumns = {@JoinColumn(name = "id_Tache")},
-        inverseJoinColumns = {@JoinColumn(name = "id_Categorie")})
     private List<Categorie> categories;
 
     public Tache() {
