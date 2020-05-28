@@ -19,13 +19,16 @@ Nous voulons faire une application de gestion de tâches (TO DOs). L'applicatio
 Vous déposerez les différents livrables (diagrammes, projet) sous le canal « Java avancé – Utiliser les frameworks », dans la section Fichiers, dans le répertoire du groupe.
 
 ## Diagramme use-case
-
 ![use-case](images/use-case.png)
 
-## diagramme
+## Diagramme MERISE
+### MCD
+![MCD](images/MCD_Merise.png)
+### MLD
+![MLD](images/MLD_merise.png)
 
-
-
-## diagramme tables crees
+## Diagramme Entity Relation
+![ER](images/ER_Workbench.png)
+## Diagramme tables crees
 
 ![use-case](images/todolist.png)
