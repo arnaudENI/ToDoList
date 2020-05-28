@@ -7,12 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@NamedQueries({
-        @NamedQuery(name = "findAllUser",
-                    query = "SELECT u FROM Utilisateur u"),
-        @NamedQuery(name = "findNameLike",
-                    query = "SELECT u FROM Utilisateur u WHERE u.nom LIKE :var")
-})
 public class Utilisateur implements Serializable {
 
     //TODO : ajouter les annotaions pour la validation des formulaires
