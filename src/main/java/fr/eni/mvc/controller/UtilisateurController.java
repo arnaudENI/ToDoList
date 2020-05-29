@@ -72,7 +72,9 @@ public class UtilisateurController {
 			mav.setViewName("listeTaches");
 
 		} else {
-			mav.addObject("pers", "Votre identifiant est inconnu");
+			Utilisateur uc = new Utilisateur();
+			mav.addObject("pers", uc);
+			mav.addObject("info", "Votre identifiant est inconnu");
 			mav.setViewName("connect");
 		}
 		log.info(mav.getViewName() + " - " + mav.getModel());
