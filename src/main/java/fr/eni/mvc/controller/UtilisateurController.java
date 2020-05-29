@@ -48,7 +48,7 @@ public class UtilisateurController {
 		try {
 			if (gu.listeUtilisateur().isEmpty()) {
 				mav.addObject("pers", "Pas d'utlisateur en base");
-				mav.setViewName("inscription");
+				mav.setViewName("register");
 
 			} else {
 				Utilisateur uc = new Utilisateur();
