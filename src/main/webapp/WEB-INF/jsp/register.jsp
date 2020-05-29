@@ -19,8 +19,7 @@
     <div class="container">
         <div class="navbar-header">
             <a  href="#" class="navbar-brand active">
-                <span class="glyphicon glyphicon-film"></span>
-                <span class="glyphicon glyphicon-film"></span>
+                <span class="glyphicon glyphicon-modal-window"></span>
             </a>
             <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
                 <span class="icon-bar"></span>
@@ -42,8 +41,11 @@
 <div class="container">
     <h1 class="bleu">Inscription</h1>
     <br><br>
+    <c:if test="${info != null}">
+        <div class="alert alert-info">${info}</div>
+    </c:if>
     <div>
-        <form:form action="addUtilisateur" method="POST" cssClass="form-horizontal" modelAttribute="utilisateur">
+        <form:form action="addUtilisateur" method="POST" cssClass="form-horizontal" modelAttribute="pers">
             <div class="form-group">
                 <form:label path="identifiant" cssClass="col-xs-2 control-label">Identifiants :</form:label>
                 <div class="col-xs-5">

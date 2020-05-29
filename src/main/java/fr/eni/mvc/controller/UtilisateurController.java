@@ -46,7 +46,9 @@ public class UtilisateurController {
 		ModelAndView mav = new ModelAndView();
 		try {
 			if (gu.listeUtilisateur().isEmpty()) {
-				mav.addObject("pers", "Pas d'utlisateur en base");
+				Utilisateur uc = new Utilisateur();
+				mav.addObject("pers", uc);
+				mav.addObject("info", "Aucun utilisateur en base");
 				mav.setViewName("register");
 
 			} else {
@@ -101,7 +103,7 @@ public class UtilisateurController {
     @RequestMapping(value="/inscription", method=RequestMethod.GET)
     public ModelAndView inscription(){
         Utilisateur u = new Utilisateur();
-        ModelAndView mav = new ModelAndView("register", "utilisateur", u);
+        ModelAndView mav = new ModelAndView("register", "pers", u);
         return mav;
     }
 
