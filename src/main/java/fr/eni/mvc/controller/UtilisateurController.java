@@ -11,6 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import fr.eni.mvc.bean.Utilisateur;
 
+import java.util.List;
+
 @Controller
 @SessionAttributes({"pers"})
 public class UtilisateurController {
@@ -43,6 +45,13 @@ public class UtilisateurController {
                mav.setViewName("connect");
         }
         System.out.println(mav.getViewName()+ " - "+mav.getModel());
+        return mav;
+    }
+
+    @RequestMapping(value="/inscription", method=RequestMethod.GET)
+    public ModelAndView inscription(){
+        Utilisateur u = new Utilisateur();
+        ModelAndView mav = new ModelAndView("register", "utilisateur", u);
         return mav;
     }
 
