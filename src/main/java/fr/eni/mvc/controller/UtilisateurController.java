@@ -99,4 +99,12 @@ public class UtilisateurController {
         return mav;
     }
 
+	@RequestMapping(value="/listeTaches", method=RequestMethod.GET)
+	public ModelAndView listerTaches() throws Exception {
+		Utilisateur u = gu.rechercherUtilisateur(5);
+		ModelAndView mav = new ModelAndView("listeTaches", "pers", u);
+		return mav;
+	}
+
+
 }
