@@ -13,35 +13,35 @@ public class GestionUtilisateur {
     @Autowired
     UtilisateurDAO udao;
 
-    public List<Utilisateur> listeUtilisateur() {
+    public List<Utilisateur> listeUtilisateur()throws Exception  {
         return udao.findAll();
     }
 
-    public Utilisateur rechercherUtilisateur(int id) {
+    public Utilisateur rechercherUtilisateur(int id)throws Exception  {
         return udao.findOne(id);
     }
 
-    public void ajouterUtilisateur(Utilisateur u) {
+    public void ajouterUtilisateur(Utilisateur u)throws Exception {
         udao.save(u);
     }
 
-    public void modifierUtilisateur(Utilisateur u) {
+    public void modifierUtilisateur(Utilisateur u) throws Exception {
         udao.save(u);
     }
 
-    public void supprimerUtilisateur(Utilisateur u) {
+    public void supprimerUtilisateur(Utilisateur u)throws Exception  {
         udao.delete(u);
     }
 
-    public void supprimerUtilisateur(int id) {
+    public void supprimerUtilisateur(int id)throws Exception  {
         udao.delete(id);
     }
 
-    public List<Utilisateur> rechercherUtilisateur(String nom){
+    public List<Utilisateur> rechercherUtilisateur(String nom)throws Exception {
         return udao.findByNom(nom);
     }
 
-    public List<Utilisateur> rechercherUtilisateurParIdentifiant(String identifiant) {
+    public List<Utilisateur> rechercherUtilisateurParIdentifiant(String identifiant)throws Exception  {
         return udao.findByIdentifiant(identifiant);
     }
 

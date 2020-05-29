@@ -33,13 +33,7 @@
 				<property name = "libelle" value="Spring"></property>
 			</bean>
 		</property>
-		<property name="taches">
-			<bean id="t1" class="fr.eni.mvc.bean.Tache">
-				<property name="description" value="coder"/>
-				<property name="date_tache" value="02/06/2020"/>
-				<property name="fait" value="false"></property>
-			</bean>
-		</property>
+	
 		
 	</bean>
 
