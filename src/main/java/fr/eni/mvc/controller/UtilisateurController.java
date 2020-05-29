@@ -29,8 +29,7 @@ public class UtilisateurController {
 
 	@Resource(name = "ut1")
 	Utilisateur ut1;
-	
-	
+		
 
 	public void persistUtilisateur(Utilisateur ut1) {
 		try {
@@ -60,6 +59,8 @@ public class UtilisateurController {
 		}
 		return mav;
 	}
+	
+	
 
 	@RequestMapping(method = RequestMethod.POST, path = "/connect")
 	public ModelAndView utilisateurConnect(@ModelAttribute("pers") Utilisateur u) {
