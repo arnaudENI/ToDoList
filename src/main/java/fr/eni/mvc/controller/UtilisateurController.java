@@ -81,12 +81,20 @@ public class UtilisateurController {
 	
 	@RequestMapping(method = RequestMethod.POST, path = "/addUtilisateur")
 	public ModelAndView addUtilisateur(Utilisateur ut) {
+		ModelAndView mav = new ModelAndView();
 		try {
-			gu.ajouterUtilisateur(ut);			
+			if(gu.rechercherUtilisateurParIdentifiant(ut.getIdentifiant()) == null) {
+				gu.ajouterUtilisateur(ut);			
+				mav.addObject("pers", ut);
+				mav.setViewName("connect");
+			}else {
+				mav.addObject("pers", "Cet identifiant existe déjà en base !");
+				mav.setViewName("register");
+			}
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new ModelAndView("connect","nouveau",ut);
+		return new ModelAndView("connect","pers",ut);
 		
 	}
 
