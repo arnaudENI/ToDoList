@@ -28,14 +28,6 @@ public class UtilisateurController {
 	Utilisateur ut1;
 		
 
-	public void persistUtilisateur(Utilisateur ut1) {
-		try {
-			gu.ajouterUtilisateur(ut1);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
 
 	@RequestMapping(method = RequestMethod.GET, path = "/connect")
 	public ModelAndView appelConnexion() {
@@ -62,11 +54,12 @@ public class UtilisateurController {
 	
 
 	@RequestMapping(method = RequestMethod.POST, path = "/connect")
-	public ModelAndView utilisateurConnect(@ModelAttribute("pers") Utilisateur u) {
+	public ModelAndView utilisateurConnect(@ModelAttribute("pers") Utilisateur u) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
 		log.info("[" + u.getIdentifiant() + " - " + u.getMdp() + "]");
-		if (u.getIdentifiant().equals(ut1.getIdentifiant()) && u.getMdp().equals(ut1.getMdp())) {
+		if (!gu.verfifierUtilisateur(u.getIdentifiant(), u.getMdp()).isEmpty()) {
+			u = gu.verfifierUtilisateur(u.getIdentifiant(), u.getMdp()).get(0);
 			mav.addObject("pers", u);
 			mav.setViewName("listeTaches");
 
@@ -107,8 +100,8 @@ public class UtilisateurController {
     }
 
 	@RequestMapping(value="/listeTaches", method=RequestMethod.GET)
-	public ModelAndView listerTaches() throws Exception {
-		Utilisateur u = gu.rechercherUtilisateur(5);
+	public ModelAndView listerTaches(@ModelAttribute("pers") Utilisateur u) throws Exception {
+		System.out.println(u);
 		ModelAndView mav = new ModelAndView("listeTaches", "pers", u);
 		return mav;
 	}

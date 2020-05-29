@@ -44,4 +44,8 @@ public class GestionUtilisateur {
     public List<Utilisateur> rechercherUtilisateurParIdentifiant(String identifiant)throws Exception  {
         return udao.findByIdentifiant(identifiant);
     }
+
+    public List<Utilisateur> verfifierUtilisateur(String identifiant, String mdp)throws Exception  {
+        return udao.findByIdentifiantAndMdp(identifiant, mdp);
+    }
 }
