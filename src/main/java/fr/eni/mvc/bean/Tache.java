@@ -17,7 +17,7 @@ public class Tache {
 
     @Column(name = "date_tache")
     @Temporal(TemporalType.DATE)
-    private Date date_tache;
+    private Date date;
 
     private boolean fait;
 
@@ -32,13 +32,13 @@ public class Tache {
 
     public Tache(String description, Date date_tache, boolean fait) {
         this.description = description;
-        this.date_tache = date_tache;
+        this.date = date_tache;
         this.fait = fait;
     }
 
     public Tache(String description, Date date_tache, boolean fait, List<Categorie> categories) {
         this.description = description;
-        this.date_tache = date_tache;
+        this.date = date_tache;
         this.fait = fait;
         this.categories = categories;
     }
@@ -46,7 +46,7 @@ public class Tache {
     public Tache(int id_Tache, String description, Date date_tache, boolean fait, List<Categorie> categories) {
         this.id_Tache = id_Tache;
         this.description = description;
-        this.date_tache = date_tache;
+        this.date = date_tache;
         this.fait = fait;
         this.categories = categories;
     }
@@ -68,11 +68,11 @@ public class Tache {
     }
 
     public Date getDate_tache() {
-        return date_tache;
+        return date;
     }
 
     public void setDate_tache(Date date_tache) {
-        this.date_tache = date_tache;
+        this.date = date_tache;
     }
 
     public boolean isFait() {
@@ -96,7 +96,7 @@ public class Tache {
         final StringBuilder sb = new StringBuilder("Tache{");
         sb.append("id_Tache=").append(id_Tache);
         sb.append(", description='").append(description).append('\'');
-        sb.append(", date_tache=").append(date_tache);
+        sb.append(", date_tache=").append(date);
         sb.append(", fait=").append(fait);
         sb.append(", categories=").append(categories);
         sb.append('}');

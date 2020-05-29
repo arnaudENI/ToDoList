@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service(value = "gestionUtilisateur")
+@Service(value="gestionUtilisateur")
 public class GestionUtilisateur {
 
     @Autowired

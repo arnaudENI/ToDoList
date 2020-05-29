@@ -5,7 +5,6 @@ import java.util.logging.Logger;
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,8 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import fr.eni.mvc.bean.Utilisateur;
 import fr.eni.mvc.service.GestionUtilisateur;
-
-import java.util.List;
 
 @Controller
 @SessionAttributes({ "pers" })
@@ -34,6 +31,7 @@ public class UtilisateurController {
 	public void persistUtilisateur(Utilisateur ut1) {
 		try {
 			gu.ajouterUtilisateur(ut1);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -45,7 +43,7 @@ public class UtilisateurController {
 		log.info("[redirection vers page connexion]");
 		ModelAndView mav = new ModelAndView();
 		try {
-			if (gu.listeUtilisateur().isEmpty()) {
+			if (gu.listeUtilisateur().isEmpty()) {				
 				Utilisateur uc = new Utilisateur();
 				mav.addObject("pers", uc);
 				mav.addObject("info", "Aucun utilisateur en base");
@@ -83,12 +81,20 @@ public class UtilisateurController {
 	
 	@RequestMapping(method = RequestMethod.POST, path = "/addUtilisateur")
 	public ModelAndView addUtilisateur(Utilisateur ut) {
+		ModelAndView mav = new ModelAndView();
 		try {
-			gu.ajouterUtilisateur(ut);			
+			if(gu.rechercherUtilisateurParIdentifiant(ut.getIdentifiant()) == null) {
+				gu.ajouterUtilisateur(ut);			
+				mav.addObject("pers", ut);
+				mav.setViewName("connect");
+			}else {
+				mav.addObject("pers", "Cet identifiant existe déjà en base !");
+				mav.setViewName("register");
+			}
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new ModelAndView("connect","nouveau",ut);
+		return new ModelAndView("connect","pers",ut);
 		
 	}
 
