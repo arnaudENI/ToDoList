@@ -44,6 +44,4 @@ public class GestionUtilisateur {
     public List<Utilisateur> rechercherUtilisateurParIdentifiant(String identifiant)throws Exception  {
         return udao.findByIdentifiant(identifiant);
     }
-
- 
 }
