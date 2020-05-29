@@ -31,9 +31,9 @@
         <div class="navbar-collapse collapse" id="navbar-main">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/">Accueil</a></li>
-                <li><a href="app/inscription" class="active">Inscription</a></li>
-                <li><a href="app/connect">Connexion</a></li>
-                <li><a href="app/listeTaches">Liste des tâches</a></li>
+                <li><a href="inscription" class="active">Inscription</a></li>
+                <li><a href="connect">Connexion</a></li>
+                <li><a href="listeTaches">Liste des tâches</a></li>
             </ul>
         </div>
     </div>
