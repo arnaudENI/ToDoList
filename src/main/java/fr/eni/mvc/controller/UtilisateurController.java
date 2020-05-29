@@ -39,7 +39,7 @@ public class UtilisateurController {
        ModelAndView mav = new ModelAndView();
        if(gu.listeUtilisateur().isEmpty()) {
     	   mav.addObject("pers", "Pas d'utlisateur en base");
-           mav.setViewName("inscription");
+           mav.setViewName("register");
        }else {
     	   Utilisateur uc = new Utilisateur();
     	   mav.addObject("pers",uc);

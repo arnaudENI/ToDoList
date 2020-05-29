@@ -30,11 +30,10 @@
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
             <ul class="nav navbar-nav navbar-right">
-                <li ><a href="#">Accueil</a></li>
-                <li><a href="#">Liste des films</a></li>
-                <li class="active"><a href="#">Ajouter un film</a></li>
-                <li><a href="#">Styles</a></li>
-                <li><a href="#">Qui sommes-nous</a></li>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="app/inscription" class="active">Inscription</a></li>
+                <li><a href="app/connect">Connexion</a></li>
+                <li><a href="app/listeTaches">Liste des tâches</a></li>
             </ul>
         </div>
     </div>

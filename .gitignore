@@ -1,3 +1,4 @@
 # Project exclude paths
 /.gradle/
 /src/main/resources/META-INF/persistence.xml
+src/main/webapp/WEB-INF/datasource.properties

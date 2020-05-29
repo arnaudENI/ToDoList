@@ -10,6 +10,4 @@ public interface TacheDAO extends JpaRepository<Tache, Integer> {
 	
     List<Tache> findByDescription(String description);
     List<Tache> findAllByCategories();
-    
-    
 }
