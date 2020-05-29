@@ -9,7 +9,7 @@
 
 <div>
  
-    <form:form action="conect" method="post" commandName="pers">
+    <form:form action="connect" method="POST" modelAttribute="pers">
         <div>
             <form:label path="identifiant">IDENTIFIANT : </form:label>
             <form:input path="identifiant"/>
@@ -22,6 +22,8 @@
             <input type="submit" value="CONNEXION">
         </div>
     </form:form>
+    
+    <p>${pers}</p>
 </div>
 
 </body>

@@ -10,5 +10,6 @@ public interface UtilisateurDAO extends JpaRepository<Utilisateur, Integer> {
 
     List<Utilisateur> findByNom(String nom);
     List<Utilisateur> findByIdentifiant(String identifiant);
-//    List<Categorie> findAllUtilisateurCategories(String nom);
+    
+    List<Utilisateur> findByOrderByCategories();
 }

@@ -22,6 +22,26 @@
 		<property name="suffix" value=".jsp"/>
 	</bean>
 
+	
+	<bean id="ut1" class="fr.eni.mvc.bean.Utilisateur">
+		<property name="identifiant" value="nono"/>
+		<property name="nom" value="coste"></property>
+		<property name="prenom" value="arnaud"></property>
+		<property name="mdp" value="pass"></property>
+		<property name="categories">
+			<bean id="cat1" class = "fr.eni.mvc.bean.Categorie">
+				<property name = "libelle" value="Spring"></property>
+			</bean>
+		</property>
+		<property name="taches">
+			<bean id="t1" class="fr.eni.mvc.bean.Tache">
+				<property name="description" value="coder"/>
+				<property name="date_tache" value="02/06/2020"/>
+				<property name="fait" value="false"></property>
+			</bean>
+		</property>
+		
+	</bean>
 
 	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
 
@@ -59,7 +79,7 @@
 
 		<property name="jpaProperties">
 			<props>
-				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="hibernate.enable_lazy_load_no_trans">true</prop>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 			</props>
