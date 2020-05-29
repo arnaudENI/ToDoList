@@ -80,6 +80,17 @@ public class UtilisateurController {
 		log.info(mav.getViewName() + " - " + mav.getModel());
 		return mav;
 	}
+	
+	@RequestMapping(method = RequestMethod.POST, path = "/addUtilisateur")
+	public ModelAndView addUtilisateur(Utilisateur ut) {
+		try {
+			gu.ajouterUtilisateur(ut);			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new ModelAndView("connect","nouveau",ut);
+		
+	}
 
     @RequestMapping(value="/inscription", method=RequestMethod.GET)
     public ModelAndView inscription(){
