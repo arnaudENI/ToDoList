@@ -72,7 +72,9 @@ public class UtilisateurController {
 			mav.setViewName("listeTaches");
 
 		} else {
-			mav.addObject("pers", "Votre identifiant est inconnu");
+			Utilisateur uc = new Utilisateur();
+			mav.addObject("pers", uc);
+			mav.addObject("info", "Votre identifiant est inconnu");
 			mav.setViewName("connect");
 		}
 		log.info(mav.getViewName() + " - " + mav.getModel());
@@ -104,5 +106,13 @@ public class UtilisateurController {
         ModelAndView mav = new ModelAndView("register", "pers", u);
         return mav;
     }
+
+	@RequestMapping(value="/listeTaches", method=RequestMethod.GET)
+	public ModelAndView listerTaches() throws Exception {
+		Utilisateur u = gu.rechercherUtilisateur(5);
+		ModelAndView mav = new ModelAndView("listeTaches", "pers", u);
+		return mav;
+	}
+
 
 }

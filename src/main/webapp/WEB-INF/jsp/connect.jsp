@@ -45,7 +45,7 @@
         <div class="alert alert-info">${info}</div>
     </c:if>
     <div>
-        <form:form action="utilisateurConnect" method="POST" cssClass="form-horizontal" modelAttribute="pers">
+        <form:form action="connect" method="POST" cssClass="form-horizontal" modelAttribute="pers">
             <div class="form-group">
                 <form:label path="identifiant" cssClass="col-xs-2 control-label">Identifiants :</form:label>
                 <div class="col-xs-5">
