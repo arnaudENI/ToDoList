@@ -31,7 +31,6 @@ public class UtilisateurController {
 	public void persistUtilisateur(Utilisateur ut1) {
 		try {
 			gu.ajouterUtilisateur(ut1);
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -85,18 +84,18 @@ public class UtilisateurController {
 	public ModelAndView addUtilisateur(Utilisateur ut) {
 		ModelAndView mav = new ModelAndView();
 		try {
-			if(gu.rechercherUtilisateurParIdentifiant(ut.getIdentifiant()) == null) {
+			if(gu.rechercherUtilisateurParIdentifiant(ut.getIdentifiant()).isEmpty()) {
 				gu.ajouterUtilisateur(ut);			
 				mav.addObject("pers", ut);
 				mav.setViewName("connect");
 			}else {
-				mav.addObject("pers", "Cet identifiant existe déjà en base !");
+				mav.addObject("info", "Cet identifiant existe déjà en base !");
 				mav.setViewName("register");
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new ModelAndView("connect","pers",ut);
+		return mav;
 		
 	}
 
