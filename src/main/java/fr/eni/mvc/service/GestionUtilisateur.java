@@ -46,7 +46,5 @@ public class GestionUtilisateur {
         return udao.findByIdentifiant(identifiant);
     }
 
-    public List<Categorie> categoriesDeUtilisateur(String nom) {
-        return udao.findAllUtilisateurCategories(nom);
-    }
+ 
 }

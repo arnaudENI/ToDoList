@@ -5,9 +5,9 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-@SuppressWarnings("JpaDataSourceORMInspection")
+
 @Entity
-public class Tache implements Serializable {
+public class Tache {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -21,11 +21,10 @@ public class Tache implements Serializable {
 
     private boolean fait;
 
-
+    @ManyToMany
 //    @JoinTable(name = "tacheCategorie",
 //        joinColumns = {@JoinColumn(name = "id_Tache")},
-//        inverseJoinColumns = {@JoinColumn(name = "id_Categorie")})
-    @ManyToMany
+//        inverseJoinColumns = {@JoinColumn(name = "id_Categorie")})  
     private List<Categorie> categories;
 
     public Tache() {
