@@ -45,9 +45,12 @@
     <div>
         <form:form action="addUtilisateur" method="POST" cssClass="form-horizontal" modelAttribute="utilisateur">
             <div class="form-group">
-                <form:label path="identifiant" cssClass="col-xs-2 control-label">Identifiant :</form:label>
-                <div class="col-xs-10">
+                <form:label path="identifiant" cssClass="col-xs-2 control-label">Identifiants :</form:label>
+                <div class="col-xs-5">
                     <form:input path="identifiant"  placeholder="Babousse"  cssClass="form-control" />
+                </div>
+                <div class="col-xs-5">
+                    <form:password path="mdp"  placeholder="••••••••••"  cssClass="form-control" />
                 </div>
             </div>
             <div class="form-group">
