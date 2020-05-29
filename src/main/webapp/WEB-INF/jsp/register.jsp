@@ -43,7 +43,7 @@
     <h1 class="bleu">Inscription</h1>
     <br><br>
     <div>
-        <form:form action="ajouterValid" method="POST" cssClass="form-horizontal" modelAttribute="utilisateur">
+        <form:form action="addUtilisateur" method="POST" cssClass="form-horizontal" modelAttribute="utilisateur">
             <div class="form-group">
                 <form:label path="identifiant" cssClass="col-xs-2 control-label">Identifiant :</form:label>
                 <div class="col-xs-10">
