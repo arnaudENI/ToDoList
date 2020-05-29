@@ -46,7 +46,7 @@
 
 		<property name="packagesToScan">
 			<list>
-				<value>fr.eni.mvc.*</value>
+				<value>fr.eni.mvc.bean</value>
 			</list>
 		</property>
 

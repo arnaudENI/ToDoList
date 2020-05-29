@@ -1,10 +1,10 @@
 package fr.eni.mvc.dao;
 
-import fr.eni.mvc.bean.Categorie;
-import fr.eni.mvc.bean.Utilisateur;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
+import fr.eni.mvc.bean.Utilisateur;
 
 public interface UtilisateurDAO extends JpaRepository<Utilisateur, Integer> {
 
