@@ -24,13 +24,13 @@
 
 	
 	<bean id="ut1" class="fr.eni.mvc.bean.Utilisateur">
-		<property name="identifiant" value="nono"/>
-		<property name="nom" value="coste"></property>
-		<property name="prenom" value="arnaud"></property>
-		<property name="mdp" value="pass"></property>
+		<property name="identifiant" value="anonyme"/>
+		<property name="nom" value="anonyme"></property>
+		<property name="prenom" value="anonyme"></property>
+		<property name="mdp" value="anonyme"></property>
 		<property name="categories">
 			<bean id="cat1" class = "fr.eni.mvc.bean.Categorie">
-				<property name = "libelle" value="Spring"></property>
+				<property name = "libelle" value="anonyme"></property>
 			</bean>
 		</property>
 	

@@ -12,4 +12,6 @@ public interface UtilisateurDAO extends JpaRepository<Utilisateur, Integer> {
     List<Utilisateur> findByIdentifiant(String identifiant);
     
     List<Utilisateur> findByOrderByCategories();
+    
+  //  List<Utilisateur> findCategoriesByTaches();
 }

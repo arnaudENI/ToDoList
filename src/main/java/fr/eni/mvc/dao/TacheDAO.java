@@ -9,7 +9,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface TacheDAO extends JpaRepository<Tache, Integer> {
 	
     List<Tache> findByDescription(String description);
-//    List<Tache> findAllByCategories();
+    //List<Tache> findBydate_tache();
+   // List<Tache> findByCategories();
     
     
 }
