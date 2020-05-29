@@ -1,6 +1,5 @@
 package fr.eni.mvc.service;
 
-import fr.eni.mvc.bean.Categorie;
 import fr.eni.mvc.bean.Utilisateur;
 import fr.eni.mvc.dao.UtilisateurDAO;
 import org.springframework.beans.factory.annotation.Autowired;
