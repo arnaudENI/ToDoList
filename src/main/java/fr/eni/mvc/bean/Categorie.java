@@ -3,9 +3,10 @@ package fr.eni.mvc.bean;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
-public class Categorie implements Serializable {
+public class Categorie {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -13,6 +14,9 @@ public class Categorie implements Serializable {
 
     @NotNull(message="Vous devez saisir un libelle")
     private String libelle;
+
+    @ManyToMany(mappedBy = "categories")
+    private List<Tache> taches;
 
     public Categorie() {
     }
